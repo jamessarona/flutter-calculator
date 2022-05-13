@@ -10,12 +10,52 @@ class CalculatorScreen extends StatefulWidget {
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
   late Size screenSize;
+  int current = 0;
+  late String firstNumber;
+  late String secondNumber;
+  late String operator;
+  late String answer;
   @override
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
+        Expanded(
+          child: ListView(
+            reverse: true,
+            children: [
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 35, vertical: 5),
+                padding: const EdgeInsets.only(bottom: 15),
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Colors.grey,
+                      width: 1,
+                    ),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      '10 + 15',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.black.withOpacity(0.7),
+                      ),
+                    ),
+                    const Text(
+                      '= 25',
+                      style: TextStyle(fontSize: 35),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
         Column(
           children: [
             Row(
@@ -186,12 +226,13 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       child: InkWell(
                         onTap: () {},
                         child: IconButton(
-                            onPressed: () {},
-                            icon: Image.asset(
-                              "assets/images/equal-mathematical-sign.png",
-                              height: 20,
-                              color: Colors.white,
-                            )),
+                          onPressed: () {},
+                          icon: Image.asset(
+                            "assets/images/equal-mathematical-sign.png",
+                            height: 20,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
                   ),
